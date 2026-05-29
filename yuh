@@ -1,0 +1,955 @@
+import React from 'react'
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom'
+
+// Colors
+const colors = {
+  primary: '#6366f1',
+  secondary: '#8b5cf6',
+  accent: '#06b6d4',
+  dark: '#0f172a',
+  surface: '#1e293b',
+  text: '#e2e8f0',
+  muted: '#94a3b8',
+}
+
+// Reusable style objects
+const containerStyle = {
+  maxWidth: '1200px',
+  margin: '0 auto',
+  padding: '0 2rem',
+}
+
+const sectionStyle = {
+  padding: '4rem 0',
+}
+
+const sectionTitleStyle = {
+  fontSize: '2.25rem',
+  textAlign: 'center' as const,
+  marginBottom: '3rem',
+  color: colors.text,
+}
+
+const cardStyle = {
+  background: colors.surface,
+  padding: '2rem',
+  borderRadius: '1rem',
+  border: '1px solid rgba(255, 255, 255, 0.1)',
+}
+
+const buttonStyle = {
+  display: 'inline-block',
+  padding: '0.75rem 1.5rem',
+  borderRadius: '0.5rem',
+  fontWeight: '600' as const,
+  cursor: 'pointer',
+  border: 'none',
+  fontSize: '1rem',
+}
+
+const buttonPrimaryStyle = {
+  ...buttonStyle,
+  background: colors.primary,
+  color: 'white',
+}
+
+const buttonSecondaryStyle = {
+  ...buttonStyle,
+  background: 'transparent',
+  color: colors.text,
+  border: '1px solid rgba(255, 255, 255, 0.2)',
+}
+
+// Header Component
+function Header() {
+  return (
+    <header style={{
+      background: colors.surface,
+      padding: '1rem 0',
+      borderBottom: '1px solid rgba(255, 255, 255, 0.1)',
+      position: 'sticky' as const,
+      top: 0,
+      zIndex: 100,
+    }}>
+      <div style={containerStyle}>
+        <nav style={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}>
+          <Link to="/" style={{
+            fontSize: '1.5rem',
+            fontWeight: '700' as const,
+            color: colors.primary,
+            display: 'flex',
+            alignItems: 'center',
+            gap: '0.5rem',
+          }}>
+            <span style={{ color: colors.accent }}>{'{'}</span> SafetyTools
+          </Link>
+          
+          <div style={{
+            display: 'flex',
+            gap: '2rem',
+          }}>
+            <Link to="/" style={{
+              color: colors.muted,
+              transition: 'color 0.2s',
+            }}>Home</Link>
+            <Link to="/tools" style={{
+              color: colors.muted,
+              transition: 'color 0.2s',
+            }}>Tools</Link>
+            <Link to="/pricing" style={{
+              color: colors.muted,
+              transition: 'color 0.2s',
+            }}>Pricing</Link>
+            <Link to="/about" style={{
+              color: colors.muted,
+              transition: 'color 0.2s',
+            }}>About</Link>
+            <Link to="/contact" style={{
+              color: colors.muted,
+              transition: 'color 0.2s',
+            }}>Contact</Link>
+          </div>
+          
+          <Link to="/pricing" style={{
+            background: colors.primary,
+            color: 'white',
+            padding: '0.5rem 1.25rem',
+            borderRadius: '0.5rem',
+            fontWeight: '500' as const,
+          }}>
+            Get Started
+          </Link>
+        </nav>
+      </div>
+    </header>
+  )
+}
+
+// Footer Component
+function Footer() {
+  return (
+    <footer style={{
+      background: colors.surface,
+      padding: '3rem 0 1.5rem',
+      borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+      marginTop: '4rem',
+    }}>
+      <div style={containerStyle}>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+          gap: '2rem',
+          marginBottom: '2rem',
+        }}>
+          <div>
+            <Link to="/" style={{
+              fontSize: '1.5rem',
+              fontWeight: '700' as const,
+              color: colors.primary,
+              display: 'flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              marginBottom: '1rem',
+            }}>
+              <span style={{ color: colors.accent }}>{'{'}</span> SafetyTools
+            </Link>
+            <p style={{ color: colors.muted, fontSize: '0.875rem' }}>
+              Professional safety tools for developers who demand reliability and security.
+            </p>
+          </div>
+          
+          <div>
+            <h4 style={{ fontSize: '1rem', marginBottom: '1rem', color: colors.text }}>Products</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link to="/tools" style={{ color: colors.muted, fontSize: '0.875rem' }}>All Tools</Link>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>Data Cleaner Pro</Link>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>API Builder</Link>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>PDF Parser</Link>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style={{ fontSize: '1rem', marginBottom: '1rem', color: colors.text }}>Company</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link to="/" style={{ color: colors.muted, fontSize: '0.875rem' }}>Home</Link>
+              <Link to="/about" style={{ color: colors.muted, fontSize: '0.875rem' }}>About</Link>
+              <Link to="/contact" style={{ color: colors.muted, fontSize: '0.875rem' }}>Contact</Link>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>Blog</Link>
+            </div>
+          </div>
+          
+          <div>
+            <h4 style={{ fontSize: '1rem', marginBottom: '1rem', color: colors.text }}>Legal</h4>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>Privacy Policy</Link>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>Terms of Service</Link>
+              <Link to="#" style={{ color: colors.muted, fontSize: '0.875rem' }}>Refund Policy</Link>
+            </div>
+          </div>
+        </div>
+        
+        <p style={{
+          textAlign: 'center' as const,
+          color: colors.muted,
+          fontSize: '0.875rem',
+        }}>
+          &copy; {new Date().getFullYear()} SafetyTools. All rights reserved.
+        </p>
+      </div>
+    </footer>
+  )
+}
+
+// Hero Section Component
+function HeroSection() {
+  return (
+    <section style={{
+      ...sectionStyle,
+      textAlign: 'center' as const,
+      background: 'linear-gradient(135deg, ' + colors.dark + ' 0%, ' + colors.surface + ' 100%)',
+    }}>
+      <div style={containerStyle}>
+        <h1 style={{
+          fontSize: '3rem',
+          fontWeight: '800' as const,
+          marginBottom: '1rem',
+          background: 'linear-gradient(135deg, ' + colors.primary + ', ' + colors.accent + ')',
+          WebkitBackgroundClip: 'text',
+          WebkitTextFillColor: 'transparent',
+        }}>
+          Safety Tools
+        </h1>
+        <p style={{
+          fontSize: '1.25rem',
+          color: colors.muted,
+          maxWidth: '700px',
+          margin: '0 auto 2rem',
+        }}>
+          Professional-grade safety tools built for developers. 
+          Secure, reliable, and designed to protect your applications.
+        </p>
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          flexWrap: 'wrap' as const,
+        }}>
+          <a href="#tools" style={buttonPrimaryStyle}>Browse Tools</a>
+          <a href="#features" style={buttonSecondaryStyle}>Learn More</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Features Section Component
+function FeaturesSection() {
+  const features = [
+    { icon: '🛡️', title: 'Secure', description: 'Built with security best practices to protect your data and applications.' },
+    { icon: '🔒', title: 'Reliable', description: 'Thoroughly tested and validated for production use.' },
+    { icon: '⚡', title: 'High Performance', description: 'Optimized for speed and efficiency, handling large datasets with ease.' },
+    { icon: '📚', title: 'Well Documented', description: 'Comprehensive documentation and examples for every tool.' },
+    { icon: '💡', title: 'Easy to Use', description: 'Simple installation and intuitive APIs that work out of the box.' },
+    { icon: '🌍', title: 'Cross-Platform', description: 'Works on Windows, macOS, and Linux without modification.' },
+  ]
+
+  return (
+    <section id="features" style={sectionStyle}>
+      <div style={containerStyle}>
+        <h2 style={sectionTitleStyle}>Why Choose Our Safety Tools</h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '2rem',
+        }}>
+          {features.map((feature, index) => (
+            <div key={index} style={{
+              ...cardStyle,
+              transition: 'transform 0.2s, box-shadow 0.2s',
+            }}>
+              <div style={{ fontSize: '2.5rem', marginBottom: '1rem', color: colors.primary }}>
+                {feature.icon}
+              </div>
+              <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: colors.text }}>
+                {feature.title}
+              </h3>
+              <p style={{ color: colors.muted }}>{feature.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Tools Section Component
+function ToolsSection() {
+  const tools = [
+    { id: 1, name: 'Security Scanner', tag: 'Security', description: 'Scan your Python applications for vulnerabilities and security issues.', price: '$29' },
+    { id: 2, name: 'Data Validator', tag: 'Data Safety', description: 'Validate and sanitize user input to prevent injection attacks.', price: '$49' },
+    { id: 3, name: 'Encryption Toolkit', tag: 'Encryption', description: 'Implement strong encryption with minimal code for your sensitive data.', price: '$39' },
+    { id: 4, name: 'Audit Logger', tag: 'Compliance', description: 'Comprehensive logging for security audits and compliance requirements.', price: '$39' },
+    { id: 5, name: 'Access Control', tag: 'Authentication', description: 'Fine-grained access control and permission management system.', price: '$59' },
+  ]
+
+  return (
+    <section id="tools" style={sectionStyle}>
+      <div style={containerStyle}>
+        <h2 style={sectionTitleStyle}>Our Safety Tools</h2>
+        <div style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+          gap: '2rem',
+        }}>
+          {tools.map((tool) => (
+            <div key={tool.id} style={{
+              background: colors.surface,
+              borderRadius: '1rem',
+              overflow: 'hidden',
+              border: '1px solid rgba(255, 255, 255, 0.1)',
+              transition: 'transform 0.2s',
+            }}>
+              <div style={{
+                height: '200px',
+                background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.13), rgba(6, 182, 212, 0.13))',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                fontSize: '3rem',
+                color: colors.primary,
+              }}>
+                🔒
+              </div>
+              <div style={{ padding: '1.5rem' }}>
+                <span style={{
+                  display: 'inline-block',
+                  background: 'rgba(99, 102, 241, 0.13)',
+                  color: colors.primary,
+                  padding: '0.25rem 0.75rem',
+                  borderRadius: '9999px',
+                  fontSize: '0.875rem',
+                  fontWeight: '500' as const,
+                  marginBottom: '0.75rem',
+                }}>
+                  {tool.tag}
+                </span>
+                <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: colors.text }}>
+                  {tool.name}
+                </h3>
+                <p style={{ color: colors.muted, marginBottom: '1.5rem' }}>
+                  {tool.description}
+                </p>
+                <div style={{
+                  display: 'flex',
+                  justifyContent: 'space-between',
+                  alignItems: 'center',
+                  color: colors.muted,
+                  fontSize: '0.875rem',
+                }}>
+                  <span>{tool.price}</span>
+                  <a href={`#buy-${tool.id}`} style={buttonPrimaryStyle}>Buy Now</a>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// CTA Section Component
+function CTASection() {
+  return (
+    <section style={sectionStyle}>
+      <div style={containerStyle}>
+        <h2 style={sectionTitleStyle}>Ready to Secure Your Applications?</h2>
+        <div style={{
+          display: 'flex',
+          gap: '1rem',
+          justifyContent: 'center',
+          flexWrap: 'wrap' as const,
+        }}>
+          <a href="/pricing" style={buttonPrimaryStyle}>View Pricing</a>
+          <a href="/contact" style={buttonSecondaryStyle}>Contact Us</a>
+        </div>
+      </div>
+    </section>
+  )
+}
+
+// Home Page
+function HomePage() {
+  return (
+    <div style={{ background: colors.dark, color: colors.text, minHeight: '100vh' }}>
+      <Header />
+      <main>
+        <HeroSection />
+        <FeaturesSection />
+        <ToolsSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+// Tools Page
+function ToolsPage() {
+  const tools = [
+    { id: 1, name: 'Security Scanner', tag: 'Security', description: 'Comprehensive security scanning for Python applications. Detects vulnerabilities, outdated dependencies, and security misconfigurations.', price: '$29', features: ['Vulnerability detection', 'Dependency checking', 'Configuration analysis', 'Detailed reports'] },
+    { id: 2, name: 'Data Validator', tag: 'Data Safety', description: 'Validate and sanitize all user input to prevent SQL injection, XSS, and other injection attacks.', price: '$49', features: ['Input validation', 'Sanitization', 'Custom rules', 'Type checking'] },
+    { id: 3, name: 'Encryption Toolkit', tag: 'Encryption', description: 'Implement military-grade encryption with minimal code. Supports AES, RSA, and modern cryptographic standards.', price: '$39', features: ['AES encryption', 'RSA support', 'Key management', 'Secure storage'] },
+    { id: 4, name: 'Audit Logger', tag: 'Compliance', description: 'Comprehensive logging system for security audits, compliance requirements, and debugging.', price: '$39', features: ['Detailed logging', 'Compliance reports', 'Searchable logs', 'Retention policies'] },
+    { id: 5, name: 'Access Control', tag: 'Authentication', description: 'Fine-grained access control system with role-based permissions, user management, and session handling.', price: '$59', features: ['Role-based permissions', 'User management', 'Session handling', 'API integration'] },
+  ]
+
+  return (
+    <div style={{ background: colors.dark, color: colors.text, minHeight: '100vh' }}>
+      <Header />
+      <main>
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>All Safety Tools</h2>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(350px, 1fr))',
+              gap: '2rem',
+            }}>
+              {tools.map((tool) => (
+                <div key={tool.id} style={{
+                  background: colors.surface,
+                  borderRadius: '1rem',
+                  overflow: 'hidden',
+                  border: '1px solid rgba(255, 255, 255, 0.1)',
+                }}>
+                  <div style={{
+                    height: '200px',
+                    background: 'linear-gradient(135deg, rgba(99, 102, 241, 0.13), rgba(6, 182, 212, 0.13))',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    fontSize: '3rem',
+                    color: colors.primary,
+                  }}>
+                    🔒
+                  </div>
+                  <div style={{ padding: '1.5rem' }}>
+                    <span style={{
+                      display: 'inline-block',
+                      background: 'rgba(99, 102, 241, 0.13)',
+                      color: colors.primary,
+                      padding: '0.25rem 0.75rem',
+                      borderRadius: '9999px',
+                      fontSize: '0.875rem',
+                      fontWeight: '500' as const,
+                      marginBottom: '0.75rem',
+                    }}>
+                      {tool.tag}
+                    </span>
+                    <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: colors.text }}>
+                      {tool.name}
+                    </h3>
+                    <p style={{ color: colors.muted, marginBottom: '1rem' }}>
+                      {tool.description}
+                    </p>
+                    <ul style={{ margin: '1rem 0', color: colors.muted, paddingLeft: '1.5rem' }}>
+                      {tool.features.map((feature, i) => (
+                        <li key={i}>• {feature}</li>
+                      ))}
+                    </ul>
+                    <div style={{
+                      display: 'flex',
+                      justifyContent: 'space-between',
+                      alignItems: 'center',
+                    }}>
+                      <span style={{ fontWeight: '700' as const, color: colors.text }}>{tool.price}</span>
+                      <a href={`#buy-${tool.id}`} style={buttonPrimaryStyle}>Buy Now</a>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+// Pricing Page
+function PricingPage() {
+  const plans = [
+    {
+      name: 'Single Tool',
+      price: '19',
+      period: '/tool',
+      description: 'Perfect for trying out one safety tool',
+      features: [
+        'Single tool license',
+        'Personal use only',
+        'Basic support',
+        'Updates for 1 year'
+      ],
+      buttonText: 'Buy Now',
+      buttonLink: '#',
+      featured: false
+    },
+    {
+      name: 'Developer Pack',
+      price: '99',
+      period: '/year',
+      description: 'Access to all safety tools for personal use',
+      features: [
+        'All 5 tools included',
+        'Personal use license',
+        'Priority support',
+        'Updates for 1 year',
+        'Early access to new tools'
+      ],
+      buttonText: 'Get Started',
+      buttonLink: '#',
+      featured: true
+    },
+    {
+      name: 'Business',
+      price: '299',
+      period: '/year',
+      description: 'For teams and commercial use',
+      features: [
+        'All tools included',
+        'Commercial use license',
+        'Up to 10 team members',
+        'Priority support',
+        'Updates for 1 year',
+        'Custom integrations'
+      ],
+      buttonText: 'Contact Sales',
+      buttonLink: '/contact',
+      featured: false
+    }
+  ]
+
+  return (
+    <div style={{ background: colors.dark, color: colors.text, minHeight: '100vh' }}>
+      <Header />
+      <main>
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Simple, Transparent Pricing</h2>
+            <p style={{
+              textAlign: 'center' as const,
+              color: colors.muted,
+              marginBottom: '3rem',
+              maxWidth: '600px',
+              marginLeft: 'auto',
+              marginRight: 'auto',
+            }}>
+              Choose the plan that fits your needs. All plans include a 30-day money-back guarantee.
+            </p>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+              maxWidth: '900px',
+              margin: '0 auto',
+            }}>
+              {plans.map((plan, index) => (
+                <div key={index} style={{
+                  ...cardStyle,
+                  textAlign: 'center' as const,
+                  borderColor: plan.featured ? colors.primary : 'rgba(255, 255, 255, 0.1)',
+                  transform: plan.featured ? 'scale(1.05)' : 'none',
+                }}>
+                  <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: colors.text }}>
+                    {plan.name}
+                  </h3>
+                  <div style={{
+                    fontSize: '3rem',
+                    fontWeight: '800' as const,
+                    margin: '1rem 0',
+                    color: colors.text,
+                  }}>
+                    ${plan.price}<span style={{ fontSize: '1rem', fontWeight: '400' as const, color: colors.muted }}>{plan.period}</span>
+                  </div>
+                  <p style={{ color: colors.muted, marginBottom: '2rem' }}>{plan.description}</p>
+                  <ul style={{
+                    listStyle: 'none',
+                    margin: '2rem 0',
+                    padding: 0,
+                  }}>
+                    {plan.features.map((feature, i) => (
+                      <li key={i} style={{
+                        padding: '0.5rem 0',
+                        color: colors.muted,
+                        borderBottom: '1px solid rgba(255, 255, 255, 0.05)',
+                      }}>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href={plan.buttonLink} style={{
+                    ...buttonPrimaryStyle,
+                    width: '100%',
+                    display: 'block',
+                  }}>
+                    {plan.buttonText}
+                  </a>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Frequently Asked Questions</h2>
+            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+              <details style={{
+                marginBottom: '1rem',
+                background: colors.surface,
+                padding: '1.5rem',
+                borderRadius: '0.5rem',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+              }}>
+                <summary style={{
+                  cursor: 'pointer',
+                  fontWeight: '600' as const,
+                  color: colors.text,
+                  marginBottom: '0.5rem',
+                }}>
+                  Can I try a tool before purchasing?
+                </summary>
+                <p style={{ color: colors.muted }}>
+                  Yes! We offer free trials for all our tools. Each trial gives you 7 days of full functionality. 
+                  No credit card required to start your trial.
+                </p>
+              </details>
+              <details style={{
+                marginBottom: '1rem',
+                background: colors.surface,
+                padding: '1.5rem',
+                borderRadius: '0.5rem',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+              }}>
+                <summary style={{
+                  cursor: 'pointer',
+                  fontWeight: '600' as const,
+                  color: colors.text,
+                  marginBottom: '0.5rem',
+                }}>
+                  What payment methods do you accept?
+                </summary>
+                <p style={{ color: colors.muted }}>
+                  We accept all major credit cards, PayPal, and bank transfers for business plans. 
+                  Payments are processed securely through Stripe.
+                </p>
+              </details>
+              <details style={{
+                marginBottom: '1rem',
+                background: colors.surface,
+                padding: '1.5rem',
+                borderRadius: '0.5rem',
+                border: '1px solid rgba(255, 255, 255, 0.1)',
+              }}>
+                <summary style={{
+                  cursor: 'pointer',
+                  fontWeight: '600' as const,
+                  color: colors.text,
+                  marginBottom: '0.5rem',
+                }}>
+                  Do you offer discounts for students or non-profits?
+                </summary>
+                <p style={{ color: colors.muted }}>
+                  Yes, we offer 50% discounts for students and registered non-profit organizations. 
+                  Please contact us with proof of status to receive your discount code.
+                </p>
+              </details>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+// About Page
+function AboutPage() {
+  const team = [
+    { name: 'Alex Carter', role: 'Founder & Lead Developer', bio: '10+ years of Python and security experience. Previously at Google and Microsoft.', avatar: '👨‍💻' },
+    { name: 'Sarah Chen', role: 'Security Expert', bio: 'Cybersecurity specialist with focus on application security. Previously at GitHub.', avatar: '👩‍💻' },
+    { name: 'Jamal Williams', role: 'Senior Engineer', bio: 'Data security specialist. Open source contributor.', avatar: '👨🏾‍💻' },
+    { name: 'Priya Patel', role: 'QA Engineer', bio: 'Ensures all tools meet our rigorous security standards.', avatar: '👩‍🔬' },
+  ]
+
+  const values = [
+    { title: 'Security First', description: 'Security is our top priority in everything we build.' },
+    { title: 'Quality Over Quantity', description: 'We would rather release one perfect tool than ten mediocre ones.' },
+    { title: 'Transparency', description: 'No hidden fees, no shady practices. We believe in honest, transparent business.' },
+    { title: 'Community', description: 'We listen to our users and build features based on real feedback.' },
+  ]
+
+  return (
+    <div style={{ background: colors.dark, color: colors.text, minHeight: '100vh' }}>
+      <Header />
+      <main>
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Our Story</h2>
+            <div style={{
+              maxWidth: '800px',
+              margin: '0 auto',
+              textAlign: 'center' as const,
+            }}>
+              <p style={{ fontSize: '1.125rem', color: colors.muted, marginBottom: '2rem' }}>
+                We started SafetyTools after seeing too many applications compromised due to preventable security issues. 
+                We realized that developers needed better tools to build secure applications from the ground up.
+              </p>
+              <p style={{ fontSize: '1.125rem', color: colors.muted, marginBottom: '2rem' }}>
+                Our mission is simple: provide developers with high-quality, security-focused Python tools 
+                that help prevent vulnerabilities and protect user data.
+              </p>
+            </div>
+          </div>
+        </section>
+
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Meet the Team</h2>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+            }}>
+              {team.map((member, index) => (
+                <div key={index} style={cardStyle}>
+                  <div style={{ fontSize: '4rem', marginBottom: '1rem', color: colors.primary }}>
+                    {member.avatar}
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: colors.text }}>
+                    {member.name}
+                  </h3>
+                  <p style={{ color: colors.primary, fontWeight: '600' as const, marginBottom: '0.5rem' }}>
+                    {member.role}
+                  </p>
+                  <p style={{ color: colors.muted }}>{member.bio}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Our Values</h2>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+            }}>
+              {values.map((value, index) => (
+                <div key={index} style={cardStyle}>
+                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: colors.text }}>
+                    {value.title}
+                  </h3>
+                  <p style={{ color: colors.muted }}>{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+// Contact Page
+function ContactPage() {
+  const [formData, setFormData] = React.useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: ''
+  })
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target
+    setFormData(prev => ({ ...prev, [name]: value }))
+  }
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault()
+    alert('Thank you for your message! We will get back to you soon.')
+    setFormData({ name: '', email: '', subject: '', message: '' })
+  }
+
+  const contactMethods = [
+    { title: 'Email', description: 'support@safetytools.dev', icon: '✉️' },
+    { title: 'Twitter', description: '@SafetyToolsDev', icon: '🐦' },
+    { title: 'GitHub', description: 'safetytools', icon: '💻' },
+    { title: 'Discord', description: 'Join our community', icon: '💬' },
+  ]
+
+  return (
+    <div style={{ background: colors.dark, color: colors.text, minHeight: '100vh' }}>
+      <Header />
+      <main>
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Get in Touch</h2>
+            <div style={{ maxWidth: '800px', margin: '0 auto' }}>
+              <p style={{
+                textAlign: 'center' as const,
+                color: colors.muted,
+                marginBottom: '3rem',
+              }}>
+                Have questions about our safety tools or pricing? Need help with an existing purchase? 
+                Fill out the form below and we'll get back to you as soon as possible.
+              </p>
+              <form onSubmit={handleSubmit} style={{ display: 'grid', gap: '1.5rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1.5rem' }}>
+                  <div>
+                    <label htmlFor="name" style={{ display: 'block', marginBottom: '0.5rem', color: colors.text }}>Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={formData.name}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        width: '100%',
+                        padding: '0.75rem',
+                        borderRadius: '0.5rem',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        background: colors.surface,
+                        color: colors.text,
+                        fontSize: '1rem',
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" style={{ display: 'block', marginBottom: '0.5rem', color: colors.text }}>Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                      required
+                      style={{
+                        width: '100%',
+                        padding: '0.75rem',
+                        borderRadius: '0.5rem',
+                        border: '1px solid rgba(255, 255, 255, 0.2)',
+                        background: colors.surface,
+                        color: colors.text,
+                        fontSize: '1rem',
+                      }}
+                    />
+                  </div>
+                </div>
+                <div>
+                  <label htmlFor="subject" style={{ display: 'block', marginBottom: '0.5rem', color: colors.text }}>Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleChange}
+                    required
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem',
+                      borderRadius: '0.5rem',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      background: colors.surface,
+                      color: colors.text,
+                      fontSize: '1rem',
+                    }}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="message" style={{ display: 'block', marginBottom: '0.5rem', color: colors.text }}>Message</label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange}
+                    required
+                    rows={6}
+                    style={{
+                      width: '100%',
+                      padding: '0.75rem',
+                      borderRadius: '0.5rem',
+                      border: '1px solid rgba(255, 255, 255, 0.2)',
+                      background: colors.surface,
+                      color: colors.text,
+                      fontSize: '1rem',
+                      resize: 'vertical' as const,
+                    }}
+                  />
+                </div>
+                <button type="submit" style={{
+                  ...buttonPrimaryStyle,
+                  width: '100%',
+                  padding: '1rem',
+                }}>
+                  Send Message
+                </button>
+              </form>
+            </div>
+          </div>
+        </section>
+
+        <section style={sectionStyle}>
+          <div style={containerStyle}>
+            <h2 style={sectionTitleStyle}>Other Ways to Reach Us</h2>
+            <div style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+              gap: '2rem',
+            }}>
+              {contactMethods.map((item, index) => (
+                <div key={index} style={cardStyle}>
+                  <div style={{ fontSize: '2.5rem', marginBottom: '1rem', color: colors.primary }}>
+                    {item.icon}
+                  </div>
+                  <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', color: colors.text }}>
+                    {item.title}
+                  </h3>
+                  <p style={{ color: colors.muted }}>{item.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  )
+}
+
+// Main App
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/tools" element={<ToolsPage />} />
+        <Route path="/pricing" element={<PricingPage />} />
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/contact" element={<ContactPage />} />
+      </Routes>
+    </Router>
+  )
+}
+
+export default App
